@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+            width: 200px;
+            padding: 10px;
+            border: 1px solid black;
+            display: none;
+            position: absolute;
+        }
+        
+        ul li:hover {
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+    <script>
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault()
+            list.style.display = "block"
+            var x = e.clientX
+            var y = e.clientY
+            if (x >= document.documentElement.clientWidth - list.offsetWidth)
+                x = document.documentElement.clientWidth - list.offsetWidth
+            if (y >= document.documentElement.clientHeight - list.offsetHeight)
+                y = document.documentElement.clientHeight - list.offsetHeight
+            list.style.left = x + "px"
+            list.style.top = y + "px"
+        })
+
+        document.addEventListener("click", () => {
+            list.style.display = "none"
+        })
+    </script>
+</body>
+
+</html>

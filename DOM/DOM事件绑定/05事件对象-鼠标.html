@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            width: 2000px;
+            height: 2000px;
+        }
+        
+        div {
+            width: 200px;
+            height: 200px;
+            background: skyblue;
+            margin: 100px;
+        }
+        
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p></p>
+    </div>
+
+    <script>
+        // clientX clientY 距离浏览器可是窗口左上角的坐标值，非固定（滚动条变动）
+        // pageX pageY 距离文档左上角的坐标值，固定的
+        // offsetX offsetY 距离出发元素左上角的坐标值(实际触发的盒子，child只看child，不看大盒子)冒泡
+        box.onclick = function(e) {
+            console.log(e.clientX, e.clientY);
+            console.log(e.pageX, e.pageY);
+            console.log(e.offsetX, e.offsetY);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="myform">
+        <input type="text" id="username">
+        <input type="reset">
+        <input type="submit" value="提交">
+    </form>
+
+    <script>
+        // focus blur
+        username.onfocus = function() {
+            console.log("获取焦点");
+        }
+
+        username.onblur = function() {
+            console.log("失去焦点");
+        }
+
+        // change 获取焦点 失去焦点的对比里面内容不一样才会触发
+        username.onchange = function() {
+            console.log("change");
+        }
+
+        // input 内容不一样就会触发
+        username.oninput = function() {
+            console.log("input");
+        }
+
+        // submit, reset
+        myform.onsubmit = function() {
+            console.log("submit", "校验表单内容");
+            return false // 阻止默认行为
+        }
+        myform.onreset = function() {
+            console.log("reset");
+        }
+    </script>
+</body>
+
+</html>

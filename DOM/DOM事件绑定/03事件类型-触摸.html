@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        box.ontouchstart = function() {
+            console.log("touchstart");
+        }
+
+        box.ontouchmove = function() {
+            console.log("touchmove");
+        }
+
+        box.ontouchend = function() {
+            console.log("touched");
+        }
+
+        box.ontouchcancel = function() { // 用得少，电话打进来了，touch才cancel
+            console.log("touchcancel");
+        }
+    </script>
+</body>
+
+</html>

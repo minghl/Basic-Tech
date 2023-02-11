@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
+            width: 500px;
+            height: 500px;
+            background-color: yellow;
+            overflow: hidden;
+        }
+        
+        #myparent {
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #child {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        
+        div {
+            margin: 50px;
+        }
+        
+        ul {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 10px solid black;
+            background: red;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="myparent">
+            <div id="child"></div>
+        </div>
+    </div>
+
+    <ul id="list">
+
+    </ul>
+    <script>
+        console.log(child.offsetLeft, child.offsetTop);
+        console.log(myparent.offsetLeft, myparent.offsetTop);
+        console.log(box.offsetLeft, box.offsetTop);
+
+        /*
+            参考点：是定位父级
+            如果父级元素没有定位，偏移量相对于body
+        */
+
+        console.log(list.clientLeft, list.clientTop);
+
+        /*
+            边框大小，可不记
+        */
+    </script>
+</body>
+
+</html>

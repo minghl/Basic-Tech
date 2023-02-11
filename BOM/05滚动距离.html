@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+            width: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height: 300px;width: 100px;"></div>
+    <button id="btn">回到顶部</button>
+    <script>
+        // document.documentElement.scrollTop
+        window.onscroll = function() {
+            // console.log(document.documentElement.scrollTop || document.body.scrollTop)
+            // console.log(document.documentElement.scrollLeft || document.body.scrollLeft)
+
+            if ((document.documentElement.scrollTop || document.body.scrollTop) > 100) {
+                console.log("显示回到顶部按钮");
+            } else {
+                console.log("隐藏回到顶部按钮");
+            }
+        }
+
+        btn.onclick = function() {
+            // window.scrollTo(0, 0)
+            // 1. 两个数字
+
+            // 2. 对象
+
+            window.scrollTo({
+                left: 0,
+                top: 0
+            })
+        }
+    </script>
+</body>
+
+</html>

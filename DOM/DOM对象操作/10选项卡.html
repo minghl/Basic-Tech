@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .header {
+            display: flex;
+            widows: 500px;
+        }
+        
+        .header li {
+            flex: 1;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        
+        .box {
+            position: relative;
+        }
+        
+        .box li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 500px;
+            height: 200px;
+            background-color: yellow;
+            display: none;
+        }
+        
+        .header .active {
+            background-color: red;
+        }
+        
+        .box .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="header">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <ul class="box">
+        <li class="active">111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+
+    <script>
+        var oHeaderItems = document.querySelectorAll(".header li")
+        var oBoxItems = document.querySelectorAll(".box li")
+
+        for (var i = 0; i < oHeaderItems.length; i++) {
+            // 自定义属性
+            oHeaderItems[i].dataset.index = i
+            oHeaderItems[i].onclick = handler
+        }
+
+        function handler() {
+            // 获取自身的属性
+            // console.log(this.dataset.index);
+            var index = this.dataset.index
+            for (let m = 0; m < oHeaderItems.length; m++) {
+                oHeaderItems[m].classList.remove("active")
+                oBoxItems[m].classList.remove("active")
+            }
+
+            oHeaderItems[index].classList.add("active")
+            oBoxItems[index].classList.add("active")
+        }
+    </script>
+</body>
+
+</html>

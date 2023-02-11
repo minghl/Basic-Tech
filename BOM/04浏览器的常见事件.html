@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        window.onload = function() {
+            // 页面所有的资源都加载完后执行（图片，视频，dom）
+            console.log("加载完成")
+            console.log(btn);
+        }
+    </script>
+
+    <button id="btn">click</button>
+
+    <script>
+        // resize
+
+        window.onresize = function() {
+            console.log('resize')
+        }
+
+        window.onscroll = function() {
+            console.log("scroll", "滚动距离达到指定距离了吗？")
+        }
+    </script>
+</body>
+
+</html>

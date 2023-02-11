@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // dom0 return false 阻止默认行为
+        document.oncontextmenu = function() {
+            console.log("右键单击，自定义右键菜单");
+            return false
+        }
+
+        // dom2 e.preventDefault
+        document.addEventListener("contextmenu", function(e) {
+            console.log("右键单击，自定义右键菜单");
+            e.preventDefault()
+        })
+    </script>
+</body>
+
+</html>

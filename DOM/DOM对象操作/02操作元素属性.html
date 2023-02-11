@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" minghl="hello">hello</div>
+    <input type="text" value="hello" id="username">
+
+    <input type="checkbox" checked id="rember" />
+
+    <img src="" alt="" id="photo">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div id="box2" data-minghl="123"></div>
+    <script>
+        // 元素自带（ 原生） 属性
+        // 自定义属性
+
+        // 操作原生属性
+        box.innerHTML = "2222"
+        username.type = "password"
+
+        photo.src = ''
+
+        // 自定义属性
+        box.setAttribute("tiechui", "222")
+        console.log(box.getAttribute("tiechui"));
+        box.removeAttribute("tiechui")
+
+        var oitems = document.getElementsByTagName("li")
+        for (let i = 0; i < oitems.length; i++) {
+            oitems[i].setAttribute("minghlindex", i)
+
+        }
+
+        // h5 ===> 约定 data-
+        console.log(box2.dataset)
+
+        box2.dataset.xiaoming = "hello2"
+
+        delete box2.dataset.xiaoming
+
+        var oitems = document.getElementsByTagName("li")
+        for (let i = 0; i < oitems.length; i++) {
+            oitems[i].dataset.index = i
+
+        }
+    </script>
+</body>
+
+</html>

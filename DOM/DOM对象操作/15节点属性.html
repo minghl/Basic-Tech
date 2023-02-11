@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        minghl
+        <div>11111</div>
+        <span>2222</span>
+        <!--我是注释-->
+    </div>
+    <script>
+        var obox = document.querySelector(".box")
+        console.log(obox.childNodes);
+
+        // node.nodeType 
+        for (let i = 0; i < obox.childNodes.length; i++) {
+            if (obox.childNodes[i].nodeType === 1) {
+                console.log(obox.childNodes[i]);
+            }
+        }
+
+        // node.nodeValue
+        console.log(obox.attributes[0].nodeValue)
+
+        // node.nodeName
+        console.log(obox.attributes[0].nodeName)
+    </script>
+</body>
+
+</html>

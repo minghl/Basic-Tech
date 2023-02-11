@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        li {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .active {
+            color: red;
+            border-bottom: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="active" id="item1">正在热映</li>
+        <li id="item2">即将上映</li>
+    </ul>
+    <script>
+        item1.onclick = function() {
+            item1.classList.add('active')
+            item2.classList.remove('active')
+        }
+        item2.onclick = function() {
+            item1.classList.remove('active')
+            item2.classList.add('active')
+        }
+
+        // 选项卡
+    </script>
+</body>
+
+</html>

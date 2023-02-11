@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="width: 100px; color: black;background-color: yellow;">1111</div>
+
+    <script>
+        // 行内样式方法 style -- 读写
+
+        console.log(box.style.color);
+        console.log(box.style["background-color"]); // 符合类型
+        console.log(box.style.backgroundColor); //驼峰
+
+        box.style.width = "200px"
+        box.style.backgroundColor = "red"
+
+        // 内部样式，外部样式，行内样式 getComputedStyle 获取，不能赋值写样式
+        console.log(getComputedStyle(box));
+        console.log(getComputedStyle(box)["background-color"]);
+        console.log(getComputedStyle(box).backgroundColor);
+
+        // getComputedStyle 标准
+        // ie 低版本
+    </script>
+</body>
+
+</html>

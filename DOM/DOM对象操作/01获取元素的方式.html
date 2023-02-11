@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">11111</div>
+    <ul>
+        <li class="newsitem">111</li>
+        <li class="newsitem">111</li>
+        <li class="newsitem">111</li>
+        <li class="newsitem">111</li>
+        <li class="newsitem">111</li>
+        <li class="newsitem">111</li>
+        <li class="newsitem">111</li>
+    </ul>
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <script>
+        // console.log(document.documentElement); // rem html
+        // console.log(document.head); // head
+        // console.log(document.body); // body
+
+        // console.log(document.getElementById("box"));
+
+        // console.log(document.getElementsByClassName("newsitem")); // 伪数组
+        // var items = document.getElementsByClassName("newsitem")
+        // console.log(items.filter);
+        // items[0].innerHTML = "news-1111"
+
+        // for (var i = 0; i < items.length; i++) {
+        //     items[i].innerHTML = "news-" + i
+        // }
+
+        // var newsitems = Array.from(items)
+        // console.log(newsitems.filter);
+
+        // getElementsByTagName
+        // var items = document.getElementsByTagName("li")
+        // console.log(items);
+
+        // getElementsByName
+        // var item = document.getElementsByName("username")
+        // console.log(item[0]);
+        // item[0].value = 123
+
+        // querySelector 返回一个对象
+        var item = document.querySelector("ul li")
+        console.log(item);
+
+        // querySelectorAll 返回所有对象
+        var item = document.querySelectorAll("ul li.newsitem")
+        console.log(item);
+    </script>
+</body>
+
+</html>

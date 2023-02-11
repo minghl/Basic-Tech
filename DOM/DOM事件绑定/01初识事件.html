@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">aaa</div>
+    <div id="box2">bbb</div>
+
+    <script>
+        box.onclick = function() {
+                console.log("1111");
+            }
+            // box.onclick() --> dom0 类型绑定事件
+
+        // dom0 类型 -- 后面会覆盖前面的，只绑定一个函数
+        box.onclick = function() {
+            console.log("2222");
+        }
+
+        // dom2 类型 绑定多个事件处理函数，按照顺序执行
+        box2.addEventListener("click", function() {
+            console.log("111");
+        })
+        box2.addEventListener("click", function() {
+            console.log("222");
+        })
+        box2.addEventListener("click", function() {
+            console.log("333");
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border: 5px solid red;
+            background-color: yellow;
+            box-sizing: border-box;
+            /* display: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        // console.log(getComputedStyle(box).width)
+        // console.log(box.style.width)
+
+        // offset*(border+padding+content)
+        console.log(box.offsetWidth, box.offsetHeight);
+
+        // 注意
+        /*
+            1. 单位 数字
+            2. box-sizing 没有任何冲突，计算方式没有影响
+            3. display:none 拿不到offset
+        */
+
+        // client*(padding+content)
+        console.log(box.clientWidth, box.clientHeight);
+    </script>
+</body>
+
+</html>

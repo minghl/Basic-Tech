@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        li {
+            overflow: hidden;
+        }
+        
+        li img {
+            float: left;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <!-- <li>
+            <img src="" alt="">
+            <h3></h3>
+            <p>观众评分 </p>
+        </li> -->
+    </ul>
+
+    <script>
+        var filmList = [{
+            url: 'https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70',
+            title: '流浪地球2',
+            grade: '7.1'
+        }, {
+            url: 'https://pic.maizuo.com/usr/movie/7a61b5f8e702ce6c705a9b51db7a62e7.jpg?x-oss-process=image/quality,Q_70',
+            title: '满江红',
+            grade: '7.6'
+        }, {
+            url: 'https://pic.maizuo.com/usr/movie/a3096eb4b17355e4baf21554d682cc05.jpg?x-oss-process=image/quality,Q_70',
+            title: '深海',
+            grade: '7.6'
+        }]
+
+        var filmItems = filmList.map(item => {
+            return `<li>
+            <img src="${item.url}" alt="">
+            <h3>${item.title}</h3>
+            <p>观众评分 ${item.grade}</p>
+        </li>`
+        })
+
+        var oul = document.querySelector("ul")
+        oul.innerHTML = filmItems.join("")
+    </script>
+</body>
+
+</html>

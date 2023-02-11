@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox" id="all"> 全选/全不选
+    <hr>
+    <ul class="shop">
+        <li>
+            <input type="checkbox">商品1
+        </li>
+        <li>
+            <input type="checkbox">商品2
+        </li>
+        <li>
+            <input type="checkbox">商品3
+        </li>
+        <li>
+            <input type="checkbox">商品4
+        </li>
+    </ul>
+
+    <script>
+        var oAll = document.querySelector("#all")
+        var oitems = document.querySelectorAll(".shop input")
+        oAll.onclick = function() {
+            for (var i = 0; i < oitems.length; i++) {
+                oitems[i].checked = oAll.checked
+            }
+        }
+
+        for (let i = 0; i < oitems.length; i++) {
+            // for判断每一项 如果checked count++
+            oitems[i].onclick = handler
+        }
+
+        function handler() {
+            var count = 0
+
+            for (let i = 0; i < oitems.length; i++) {
+                if (oitems[i].checked) count++
+            }
+
+            if (count === oitems.length) {
+                oAll.checked = true
+            } else {
+                oAll.checked = false
+            }
+        }
+    </script>
+</body>
+
+</html>

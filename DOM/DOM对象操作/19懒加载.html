@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        ul li {
+            overflow: hidden;
+            height: 150px;
+        }
+        
+        ul li img {
+            float: left;
+            width: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>标题</h1>
+    <ul id="list">
+
+    </ul>
+    <script>
+        var arr1 = [{
+            name: "流浪地球2",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }, {
+            name: "流浪地球2",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }, {
+            name: "流浪地球2",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }, {
+            name: "流浪地球2",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }, {
+            name: "流浪地球2",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }]
+        var arr2 = [{
+            name: "流浪地球3",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }, {
+            name: "流浪地球3",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }, {
+            name: "流浪地球3",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }, {
+            name: "流浪地球3",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }, {
+            name: "流浪地球3",
+            url: "https://pic.maizuo.com/usr/movie/228a4e54fecfdb1c843f83ed28f947d6.jpg?x-oss-process=image/quality,Q_70"
+        }]
+
+        renderHTML(arr1)
+
+        function renderHTML(arr) {
+            //     list.innerHTML += arr.map(item => {
+            //         return `<li>
+            //     <img src="${item.url}" alt="">
+            //     <h3>${item.name}</h3>
+            // </li>`
+            //     }).join("")
+
+            for (var i = 0; i < arr.length; i++) {
+                var oli = document.createElement("li")
+                oli.innerHTML = `<img src="${arr[i].url}" alt="">
+                    <h3>${arr[i].name}</h3`
+                list.appendChild(oli)
+            }
+        }
+        isLoading = false
+        window.onscroll = function() {
+            // console.log("111");
+            var listHeight = list.offsetHeight
+            var listTop = list.offsetTop
+                // console.log(listHeight + listTop);
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+            var windowHeight = document.documentElement.clientHeight
+
+            if (isLoading) return
+            if ((listHeight + listTop) - Math.round(windowHeight + scrollTop) < 50) {
+                console.log("到底了");
+                isLoading = true
+                    // 渲染下一页数据
+                setTimeout(() => {
+                    renderHTML(arr2)
+
+                    isLoading = false // 下一次到底事件继续触发
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+
+</html>
