@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form{
+            width: 400px;
+            margin: 50px auto;
+            border: 1px solid #f7f7f7;
+            line-height: 2;
+            padding: 20px;
+        }
+        label{
+            display: inline-block;
+            width: 60px;
+            text-align: right;
+        }
+        .required{
+            color: red;
+        }
+        button{
+            margin-right: 20px;
+        }
+        table{
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 2px 0;
+            text-align: center;
+            border: solid 1px #e3e3e3;
+        }
+        a{
+            text-decoration: none;
+            margin-right: 6px;
+        }
+        a:hover{
+            color: red;
+            text-decoration: underline;
+        }
+        .display-none{
+            display: none;
+        }
+        .tip{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <div><label for="sname"><span class="required">*</span> 姓名：</label><input type="text" id="sname" placeholder="请输入姓名"></div>
+        <div><label for="sage">年龄：</label><input type="text" id="sage" placeholder="请输入年龄">
+        <div class="tip required display-none">
+            提示：年龄是3-99之间的整数
+        </div></div>
+        <div><label for="saddress">籍贯：</label><input type="text" id="saddress" placeholder="请输入籍贯"></div>
+        <div id="btns"><div><button id="import-btn">导入已有的数据</button><button id="clear-btn">清空表格中的数据</button></div>
+        <div><button id="add-btn">添加数据</button><button id="sort-btn">按照年龄排序</button></div></div>
+        
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>籍贯</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="#">删除</a><a href="#">修改</a></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var olddata = [{
+            sid:1,
+            sname:"张三",
+            sage:23,
+            saddress:"北京市"
+        },
+        {
+            sid:2,
+            sname:"李四",
+            sage:24,
+            saddress:"河北省"
+        },
+        {
+            sid:3,
+            sname:"王五",
+            sage:20,
+            saddress:"湖南省"
+        }
+    ]
+        var data = []
+        var btns = document.getElementById("btns"),
+        tbody = document.querySelector("tbody"),
+        ipts = document.querySelectorAll("input"),
+        importbtn = document.getElementById("import-btn"),
+        tip = document.querySelector(".tip"),
+        thead = document.querySelector("thead"),
+        flag,
+        ageStatus = true
+
+        function render() {
+            var str = ''
+            for(var i = 0; i<data.length;i++){
+                str +=`<tr data-index='${i}'>
+                    <td>${data[i].sid}</td>
+                    <td>${data[i].sname}</td>
+                    <td>${data[i].sage}</td>
+                    <td>${data[i].saddress}</td>
+                    <td><a href="#" class="remove-btn" onclick="removeItem(this)" data-index='${i}'>删除</a><a href="#" class="edit-btn" onclick="editItem(this)" data-index='${i}'>修改</a></td>
+                </tr>`
+            }
+            tbody.innerHTML = str
+            if(!importbtn.disabled){
+                importbtn.disabled = true
+            }
+
+        }
+
+        btns.addEventListener("click",function(e){
+            var t = e.target, tid = t.id
+            switch(tid){
+                case "import-btn":
+                    data = olddata
+                
+                    render();
+                    break;
+                case "clear-btn":
+                    tbody.innerHTML = '';
+                    data=[];
+                    break;
+                case "add-btn":
+                    addData()
+                    break;
+                case "sort-btn":
+                    t.addEventListener("click",sortFn)
+                    break;
+            }
+        })
+
+        ipts[1].addEventListener("input", function(){
+            var sage = ipts[1].value.trim(),
+            pattAge = /^([3-9])|([1-9][0-9])$/;
+            if(sage && !pattAge.test(sage)){
+                tip.style.display = "block"
+                clearIpt()
+                ageStatus = false
+            }else{
+                tip.style.display = "none"
+                ageStatus = true
+            }
+        })
+
+
+        function addData(){
+           
+            var sname = ipts[0].value.trim()
+            if(!sname){
+                return alert("姓名不为空")
+            }
+            if(!ageStatus) return
+            var sage = ipts[1].value.trim(),
+            varsaddress = ipts[2].value.trim();
+            var obj = {
+                sid:data.length+1,
+                sname:sname,
+                sage:sage ? sage:"未知",
+                saddress:saddress ?saddress:"未知"
+            };
+
+            data.push(obj)
+            render();
+
+            clearIpt()
+        }
+
+        function clearIpt(){
+            for(var i = 0; i < ipts.length; i++){
+                ipts[i].value = ""
+            }
+        }
+
+        // function itemOperate(){
+        //     tbody.addEventListener("click",function(e){
+        //         var t = e.target,
+        //         cls = t.className;
+        //         switch(cls){
+        //             case "remove-btn":
+        //                 break;
+        //             case "edit-btn":
+        //                 break;
+        //         }
+        //     })
+        // }
+
+        function removeItem(ele){
+            var delIdx = ele.getAttribute('data-index')
+            data.splice(delIdx,1)
+            render()
+        }
+
+        function edit(ele){
+            var delIdx = ele.getAttribute('data-index')
+        }
+        function sortFn(){
+            if(!data.length){
+                return
+            }
+            if(flag){
+                data.sort(function(a,b){
+                    return a.sage-b.sage
+                })
+            }else{
+                data.sort(function(a,b){
+                    return b.sage-a.sage
+                })
+            }
+            flag = !flag
+            render()
+        }
+   
+   </script>
+</body>
+</html>
